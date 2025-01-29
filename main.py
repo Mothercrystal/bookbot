@@ -27,6 +27,8 @@ def main ():
 
     print("--- Begin report of books/frankenstein.txt ---")
     print(f"{len(words)} words found in the document\n")
+    reading_time = calculate_reading_time(len(words))
+    print(reading_time + "\n")
 
     char_list = []
     for char, count in lower_case_dict.items():
@@ -39,6 +41,16 @@ def main ():
         print(f"The '{char_info["letter"]}' was found {char_info["num"]} times")
 
     print("--- End report ---")
+
+
+def calculate_reading_time(word_count, reading_speed=238):    
+    reading_time = word_count / reading_speed
+    hours = int((reading_time) / 60)
+    minutes = int((reading_time) - (hours * 60))
+    seconds = int((reading_time - int(reading_time)) * 60)
+    return f"Reading time: {hours} hours, {minutes} minutes and {seconds} seconds"
+    
+
 
 if __name__ == "__main__":
     main()
